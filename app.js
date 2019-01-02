@@ -27,7 +27,7 @@ var server = http.createServer(function (req, res) {
         });
     } else {
         res.writeHead(200);
-        res.write(html);
+        res.write("hey");
         res.end();
     }
 });
