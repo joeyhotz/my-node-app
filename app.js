@@ -1,7 +1,6 @@
 var port = process.env.PORT || 3000,
     http = require('http'),
-    fs = require('fs'),
-    html = fs.readFileSync('index.html');
+    utils = require('./utils');
 
 var log = function(entry) {
     fs.appendFileSync('/tmp/sample-app.log', new Date().toISOString() + ' - ' + entry + '\n');
@@ -27,16 +26,10 @@ var server = http.createServer(function (req, res) {
         });
     } else {
         res.writeHead(200);
-        const message = underConstructionMessage();
-        res.write(message);
+        res.write(utils.underConstructionMessage());
         res.end();
     }
 });
-
-var underConstructionMessage = function () {
-    const message = "Under construction";
-    return message;
-}
 
 // Listen on port 3000, IP defaults to 127.0.0.1
 server.listen(port);
