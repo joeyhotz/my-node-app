@@ -27,10 +27,16 @@ var server = http.createServer(function (req, res) {
         });
     } else {
         res.writeHead(200);
-        res.write("hey");
+        const message = underConstructionMessage();
+        res.write(message);
         res.end();
     }
 });
+
+var underConstructionMessage = function () {
+    const message = "Under construction";
+    return message;
+}
 
 // Listen on port 3000, IP defaults to 127.0.0.1
 server.listen(port);
